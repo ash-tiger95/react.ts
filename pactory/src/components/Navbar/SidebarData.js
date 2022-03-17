@@ -14,14 +14,14 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'About',
-    path: '/About',
+    title: 'Monitoring',
+    path: '/Monitoring',
     icon: <BsIcons.BsFillInfoCircleFill />,
     cName: 'nav-text'
   },
   {
-    title: 'Contact Us',
-    path: '/Contact',
+    title: 'Search',
+    path: '/Search',
     icon: <BsIcons.BsEnvelopeFill />,
     cName: 'nav-text'
   }
