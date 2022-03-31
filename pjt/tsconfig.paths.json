@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+            "@component/*": ["src/component/*"],
+            "@container/*": ["src/container/*"],
+            "@enum": ["src/enum/index"],
+            "@enum/*": ["src/enum/*"],
+            "@model/*": ["src/model/*"]
+        }
+    }
+}
