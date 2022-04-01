@@ -1,5 +1,5 @@
 import React from "react";
-import DailyCheckList from "@container/DailyCheck";
+import DailyCheckList from "@container/DailyCheck/DailyCheckList";
 
 const DailyCheck = () => {
   return (
