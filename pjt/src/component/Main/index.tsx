@@ -1,7 +1,13 @@
 import React from "react";
 
+import NavbarCustom from "@component/Common/Navbar";
+
 const Main = () => {
-  return <div>Main page</div>;
+  return (
+    <>
+      <NavbarCustom></NavbarCustom>Main page
+    </>
+  );
 };
 
 export default Main;
