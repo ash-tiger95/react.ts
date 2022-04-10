@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import DailyCheckItem from "./DailCheckItem";
 
 import NoResult from "@component/NoResult";
-import { MDailyCheck } from "@model/DailyCheck";
+import { MDailyCheck, MDailyCheck_Upload } from "@model/DailyCheck";
 import { EDailyCheckListType } from "@enum/DailyCheck";
 
 import { get } from "lodash";
@@ -39,7 +39,13 @@ const DailyCheckList = () => {
     return count;
   }, [dailyCheckList]);
 
-  const handleItemChange = (param: MDailyCheck, index: number) => {};
+  const handleUploadChange = (param: MDailyCheck_Upload) => {
+    setDailyCheckList(
+      dailyCheckList.map((value, index) => {
+        return value.id === param.id ? { ...value, upload: param } : value;
+      })
+    );
+  };
 
   return (
     <>
@@ -53,7 +59,7 @@ const DailyCheckList = () => {
               index={index}
               value={value}
               key={value.id}
-              onChange={handleItemChange}
+              onChange={handleUploadChange}
               isChecked={checkedList.indexOf(value.id) > -1 ? true : false} // 있으면 index 번호, 없으면 -1
               onSelect={(isSelect) => {
                 if (isSelect) {

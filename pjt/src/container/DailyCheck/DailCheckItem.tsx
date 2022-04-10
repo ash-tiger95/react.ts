@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { get } from "lodash";
 import CheckBox from "@component/Common/CheckBox";
@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 interface IProps {
   index: number;
   value: MDailyCheck;
-  onChange: (param: MDailyCheck, index: number) => void;
+  onChange: (param: MDailyCheck_Upload) => void;
   isChecked: boolean;
   onSelect?: (isSelected: boolean) => void;
 }
@@ -22,6 +22,7 @@ const DailCheckItem: React.FC<IProps> = ({
   isChecked,
   onSelect = () => {},
 }) => {
+  const [isUpdate, setIsUpdate] = useState<boolean>(false);
   const [uploadData, setUploadData] = useState<MDailyCheck_Upload>({
     id: value.id,
     observation: get(value, "upload.observation", ""),
@@ -36,7 +37,17 @@ const DailCheckItem: React.FC<IProps> = ({
     EDailyCheckBtn.BTN4,
   ];
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {};
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setUploadData({
+      ...uploadData,
+      observation: (e.target as any).value,
+    });
+    setIsUpdate(!isUpdate);
+  };
+
+  useEffect(() => {
+    onChange(uploadData);
+  }, [isUpdate]);
   return (
     <>
       <div>
